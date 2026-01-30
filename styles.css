@@ -1,4 +1,4 @@
-/* General reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,17 +6,63 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #e0e0e5; /* subtle mac-like background */
   color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-/* Container */
+/* MacBook Window */
 .container {
-  max-width: 900px;
-  margin: 2rem auto;
-  text-align: center;
+  width: 900px;
+  max-width: 95%;
+  background: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+  padding: 2rem;
+  transition: transform 0.3s ease;
 }
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+/* Mac Top Bar */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background: #d8d8d8;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Mac Top Bar Buttons */
+.container .top-buttons {
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  display: flex;
+  gap: 8px;
+}
+
+.container .top-buttons span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.container .close { background: #ff5f56; }
+.container .minimize { background: #ffbd2e; }
+.container .maximize { background: #27c93f; }
 
 /* Title */
 .title {
@@ -25,24 +71,28 @@ body {
   margin-bottom: 2rem;
   font-weight: bold;
   text-shadow: 1px 1px 2px #00000033;
+  text-align: center;
 }
 
 /* Flyer Card */
 .flyer-card {
   position: relative;
-  display: inline-block;
-  margin-bottom: 2rem;
+  display: block;
+  margin: 0 auto 2rem;
   cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flyer-card:hover {
-  transform: scale(1.05) rotate(-1deg);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
 .flyer-image {
   max-width: 100%;
+  display: block;
   border-radius: 12px;
 }
 
@@ -53,67 +103,71 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4rem;
-  color: rgba(255, 203, 5, 0.15);
+  color: rgba(255, 203, 5, 0.12);
   pointer-events: none;
   user-select: none;
   font-weight: bold;
 }
 
-/* Plans */
+/* Plans Section */
 .plans {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
 .plan {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 1.5rem;
-  width: 250px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 240px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .plan:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.25);
 }
 
 .plan h2 {
   color: #ffcb05;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .price {
   font-weight: bold;
   font-size: 1.2rem;
   margin: 0.5rem 0;
+  text-align: center;
 }
 
 .note {
   font-size: 0.85rem;
   color: #666;
+  text-align: center;
 }
 
-/* Contact Buttons */
+/* Contact Buttons floating on right */
 .contact-buttons {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
 .contact-btn {
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 50px;
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+  font-size: 0.9rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
